@@ -30,7 +30,7 @@
 <meta property="og:description" content="Ariekei" />
 <link rel="canonical" href="https://ashpex.now.sh//posts/Ariekei/" />
 <meta property="og:url" content="https://ashpex.now.sh//posts/Ariekei/" />
-<meta property="og:site_name" content="Chirpy" />
+<meta property="og:site_name" content="Ashpex" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-10-07T00:00:00+07:00" />
 <meta name="twitter:card" content="summary" />
@@ -41,7 +41,7 @@
 <!-- End Jekyll SEO tag -->
 
 
-  <title>Ariekei [HTB] | Chirpy
+  <title>Ariekei [HTB] | Ashpex
   </title>
 
   <!--
@@ -177,14 +177,15 @@
     <div id="avatar">
       <a href="/" alt="avatar" class="mx-auto">
         
+
         
-        
+
         <img src="/assets/img/sample/avatar.jpg" alt="avatar" onerror="this.style.display='none'">
       </a>
     </div>
 
     <div class="site-title mt-3">
-      <a href="/">Chirpy</a>
+      <a href="/">Ashpex</a>
     </div>
 
     <div class="site-subtitle font-italic">InfoSec/CyberSec Blog And Writeups.</div>
@@ -358,6 +359,8 @@
 <!-- Add attribute 'hide-bullet' to the checkbox list -->
 
 
+
+
 <!-- return -->
 <div class="row">
 
@@ -457,9 +460,9 @@
 
       <div class="post-content">
 
-        <!-- Using lozad. See: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
         
-          <h1 id="ariekei">Ariekei</h1>
+
+        <h1 id="ariekei">Ariekei</h1>
 
 <p>Ariekei was an insane linux box that required getting out of 3 different docker containers and overall as a box was mainly docker features, including the priv esc. It required a bit of enumeration to find an upload site where we upload a reverse shell and get our first container. From there we move out of each one and use an exploit-db script to get a shell as www-data in beehive. We then decrypt an ssh-key with john and login to the box as user. To get root we use the docker privileges of the group to mount the root directory and privilege escalate to root.</p>
 
@@ -1085,7 +1088,7 @@ bash-4.4#
 </pre></td></tr></tbody></table></code></div></div>
 <p>And there we get our root shell, Thanks for reading hoep you enjoyed.</p>
 
-        
+
       </div>
 
       <div class="post-tail-wrapper text-muted">
@@ -1147,19 +1150,19 @@ bash-4.4#
 
     
       
-        <a href="https://twitter.com/intent/tweet?text=Ariekei [HTB] - Chirpy&url=https://ashpex.now.sh//posts/Ariekei/" data-toggle="tooltip" data-placement="top"
+        <a href="https://twitter.com/intent/tweet?text=Ariekei [HTB] - Ashpex&url=https://ashpex.now.sh//posts/Ariekei/" data-toggle="tooltip" data-placement="top"
           title="Twitter" target="_blank" rel="noopener" aria-label="Twitter">
           <i class="fa-fw fab fa-twitter"></i>
         </a>
     
       
-        <a href="https://www.facebook.com/sharer/sharer.php?title=Ariekei [HTB] - Chirpy&u=https://ashpex.now.sh//posts/Ariekei/" data-toggle="tooltip" data-placement="top"
+        <a href="https://www.facebook.com/sharer/sharer.php?title=Ariekei [HTB] - Ashpex&u=https://ashpex.now.sh//posts/Ariekei/" data-toggle="tooltip" data-placement="top"
           title="Facebook" target="_blank" rel="noopener" aria-label="Facebook">
           <i class="fa-fw fab fa-facebook-square"></i>
         </a>
     
       
-        <a href="https://telegram.me/share?text=Ariekei [HTB] - Chirpy&url=https://ashpex.now.sh//posts/Ariekei/" data-toggle="tooltip" data-placement="top"
+        <a href="https://telegram.me/share?text=Ariekei [HTB] - Ashpex&url=https://ashpex.now.sh//posts/Ariekei/" data-toggle="tooltip" data-placement="top"
           title="Telegram" target="_blank" rel="noopener" aria-label="Telegram">
           <i class="fa-fw fab fa-telegram"></i>
         </a>
@@ -1671,14 +1674,7 @@ The host to which you need to connect is bandit.labs.overthewire.org, on port 22
 
 </div> <!-- .row -->
 
-<!-- image lazy load: https://github.com/ApoorvSaxena/lozad.js -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 
-<script type="text/javascript">
-  const imgs = document.querySelectorAll('#post-wrapper img');
-  const observer = lozad(imgs);
-  observer.observe();
-</script>
 
 
 
